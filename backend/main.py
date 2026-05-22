@@ -331,6 +331,9 @@ async def analyze_certificate(file: UploadFile = File(...), contents: bytes = No
         "extracted_text": text[:200]
     }
 
+import os
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
